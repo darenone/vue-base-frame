@@ -8,11 +8,13 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+// import colorConfig from '@/config/color'
+// import { handleEmpty } from '@/lib/tool'
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
+    name: 'Home',
+    components: {
+        HelloWorld
+    }
 }
 </script>
