@@ -5,12 +5,18 @@
             <li>今天你吃药了嘛？</li>
         </ul>
         <!-- {{menuType}} -->
-        <!-- {{userName}} -->
-        {{userName}}
+        <p>{{userName}}</p>
+        <p>{{menuType}}</p>
+        <button @click="handleChangeMenuType('2')">修改menuType的值</button><br>
+        <button @click="handleChangeMenuList">异步获取菜单list</button>
+        <ul>
+            <li v-for="(item, index) in menuList" :key="index">{{item.name}}</li>
+        </ul>
+        <button @click="handleChangeUserName">异步获取userName</button>
     </section>
 </template>
 <script>
-import {mapState, mapGetters} from 'vuex'
+import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
 export default {
     props: {
         taskId: {
@@ -22,9 +28,11 @@ export default {
         // ...mapState({
         //     userName: state => state.user.userName
         // }),
-        // ...mapState([
-        //     'menuType',
-        // ]),
+        ...mapState([
+            'menuList',
+            'userName',
+            'menuType'
+        ]),
         // menuTypeName () {
         //     return this.$store.getters.menuType
         // },
@@ -34,26 +42,26 @@ export default {
     },
     data () {
         return {
-            
         }
     },
     methods: {
-        
+        ...mapMutations([
+            'SET_USER_NAME',
+            'SET_MENU_TYPE'
+        ]),
+        ...mapActions([
+            'updateMenuList',
+            'getUserName'
+        ]),
+        handleChangeMenuType () {
+            this.SET_MENU_TYPE('2')
+        },
+        handleChangeMenuList () {
+            this.updateMenuList()
+        },
+        handleChangeUserName () {
+            this.getUserName()
+        }
     },
-    beforeRouteLeave (to, from, next) {
-        // const leave = confirm('确定离开吗？')
-        // if (leave) {
-        //     next()
-        // } else {
-        //     next(false)
-        // }
-        next(vm => {
-            console.log(vm) // vue实例
-        })
-    },
-    beforeRouteUpdate (to, from, next) {
-        console.log('组件被复用')
-        next()
-    }
 }
 </script>
