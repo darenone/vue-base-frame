@@ -70,6 +70,11 @@ const routes = [
       }
     ]
   },
+  {
+    path: '/father',
+    name: 'father',
+    component: () => import('../views/father.vue'),
+  },
   ...errorRoutes,
   {
     path: '*',

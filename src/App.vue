@@ -32,11 +32,13 @@
          <li>
           <router-link to="/product/ele-product">电子产品</router-link><br>
         </li>
-         <li>
+        <li>
           <router-link to="/product/ele-product/phone">手机</router-link>
           <!-- <router-link to="/product/ele-product/computer">电脑</router-link> -->
           <router-link :to="{name: 'computer'}">电脑</router-link>
         </li>
+        <li>
+          <router-link to="/father">父组件</router-link><br>
         </li>
       </ul>
     </div>
