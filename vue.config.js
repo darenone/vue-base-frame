@@ -36,7 +36,12 @@ module.exports = {
     /* 设置为0.0.0.0则所有的地址均能访问 */
     host: '0.0.0.0',
     port: 4000,
-    // proxy: 'http://localhost:4000', // 告诉开发服务器，将任何未知请求（没有匹配到静态文件的请求），都代理到这个url上，来满足跨域的请求
+    proxy: {
+      '/api': {
+        target: 'http://10.0.0.186:18090', // 测试环境
+        changeOrigin: true
+      }
+    }
   },
   // configureWebpack: {
   //   plugins: [

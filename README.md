@@ -1,7 +1,8 @@
 # vue-base-frame
 
 vue练习
-## 安装依赖
+
+### 安装依赖
 ```
 npm install
 ```
