@@ -91,7 +91,7 @@ export default {
   opacity: 0;
 }
 .router-enter-active {
-  transition: opacity 1s ease;
+  transition: opacity 0.5s ease;
 }
 .router-enter-to {
   opacity: 1;
@@ -100,7 +100,7 @@ export default {
   opacity: 1;
 }
 .router-leave-active {
-  transition: opacity 1s ease;
+  transition: opacity 0.5s ease;
 }
 .router-leave-to {
   opacity: 0;

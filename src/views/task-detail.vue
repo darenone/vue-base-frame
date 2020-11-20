@@ -57,7 +57,7 @@ export default {
             this.SET_MENU_TYPE('2')
         },
         handleChangeMenuList () {
-            this.updateMenuList()
+            // this.updateMenuList()
         },
         handleChangeUserName () {
             this.getUserName()

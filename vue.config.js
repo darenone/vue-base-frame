@@ -38,7 +38,7 @@ module.exports = {
     port: 4000,
     proxy: {
       '/api': {
-        target: 'http://10.0.0.186:18090', // 测试环境
+        target: 'http://localhost:3000', // 测试环境
         changeOrigin: true
       }
     }
