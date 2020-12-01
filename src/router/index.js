@@ -75,6 +75,16 @@ const routes = [
     name: 'father',
     component: () => import('../views/father.vue'),
   },
+  {
+    path: '/house',
+    name: 'house',
+    component: () => import('../views/house/index.vue'),
+  },
+  {
+    path: '/menu_page',
+    name: 'menu_page',
+    component: () => import('../views/menu-page.vue'),
+  },
   ...errorRoutes,
   {
     path: '*',

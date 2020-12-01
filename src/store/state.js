@@ -1,6 +1,7 @@
 const state = {
     menuType: 1,
-    menuList: []
+    menuList: [],
+    currentNav: null
 }
 
 export default state
