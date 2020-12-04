@@ -38,6 +38,7 @@ export default {
     height: 45px;
     line-height: 45px;
     text-align: left;
+    padding-left: 15px;
     cursor: pointer;
 }
 .a-menu-item-active {

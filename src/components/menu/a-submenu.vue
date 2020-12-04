@@ -33,7 +33,7 @@ export default {
         height: 45px;
         line-height: 45px;
         text-align: left;
-        user-select: none;
+        padding-left: 15px;
         div {
             display: inline-block;
         }
