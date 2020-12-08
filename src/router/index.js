@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Layout from '../views/Layout.vue'
 import errorRoutes from './error-router'
 import {setTitle} from '@/lib/util'
 
@@ -10,11 +11,17 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    component: Layout,
     meta: {
       title: '首页',
       requiresAuth: ['admin', 'user']
-    }
+    },
+    children: [
+      {
+        path: 'home',
+        component: Home
+      }
+    ]
   },
   {
     path: '/about',

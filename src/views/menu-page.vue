@@ -1,7 +1,7 @@
 <template>
     <div class="menu-box">
         <a-menu>
-           <template v-for="(item, index) in navList">
+            <template v-for="(item, index) in navList">
                 <a-menu-item v-if="!item.children" :uId="`menu_${item.title}_${index}`" :key="`menu_item_${index}`" :style="{'padding-left': `${item.level * 20}px`}">{{ item.title }}</a-menu-item>
                 <re-submenu v-else :parent="item" :key="`menu_item_${index}`" :index="index"></re-submenu>
             </template>
