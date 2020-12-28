@@ -3,7 +3,7 @@
         <slot></slot>
         <Menu width="auto" v-if="!collapsed">
             <template v-for="(item, index) in list">
-                <MenuItem v-if="!item.children" :name="`menu_${item.title}_${index}`" :key="`menu_item_${index}`">{{ item.title }}</MenuItem>
+                <MenuItem v-if="!item.children" :name="`menu_${item.title}_${index}`" :key="`menu_item_${index}`" :to="item.path">{{ item.title }}</MenuItem>
                 <i-resubmenu v-else :parent="item" :key="`menu_item_${index}`" :index="index"></i-resubmenu>
             </template>
         </Menu>

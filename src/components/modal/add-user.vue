@@ -71,22 +71,22 @@ export default {
         handleSubmit (name) {
             this.$refs[name].validate((valid) => {
                 if (valid) {
-                    this.$emit('ok', this.formValidate)
+                    this.$emit('ok', this.formValidate);
                 }
             })
         },
         handleReset (name) {
-            this.$refs[name].resetFields()
-            this.$emit('cancel', false)
+            this.$refs[name].resetFields();
+            this.$emit('cancel', false);
         },
         // 查询用户详情
         async getUserById (params) {
             this.userInfo = {}
             try {
-                const {status, msg, code, data} = await getUserById(params)
-                this.formValidate = {...data}
+                const {status, msg, code, data} = await getUserById(params);
+                this.formValidate = {...data};
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
         },
     },
@@ -96,6 +96,6 @@ export default {
                 id: this.userId
             })
         }
-    },    
+    },
 }
 </script>

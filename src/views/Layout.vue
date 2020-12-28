@@ -6,7 +6,9 @@
         breakpoint="lg" 
         :collapsed-width="60"
         :reverse-arrow="true">
-            <i-amenu :collapsed="collapsed" :list="navList"><h1 v-show="!collapsed">logo</h1></i-amenu>
+            <i-amenu :collapsed="collapsed" :list="navList">
+                <h1 v-show="!collapsed">logo</h1>
+            </i-amenu>
         </Sider>
         <Layout>
             <Header class="header-wrapper">
@@ -14,7 +16,7 @@
             </Header>
             <Content class="content-con">
                 <Card class="page-card">
-                    <router-view/>
+                    <router-view key="default"/>
                 </Card>
             </Content>
             <Footer class="footer-wrapper">
@@ -32,10 +34,20 @@ export default {
             collapsed: false,
             navList: [
                 {
-                    title: '1'
+                    title: '首页',
+                    path: '/home'
                 },
                 {
-                    title: '2'
+                    title: '关于',
+                    path: '/about'
+                },
+                {
+                    title: '新房',
+                    path: '/house'
+                },
+                {
+                    title: '地图找房',
+                    path: '/map'
                 },
                 {
                     title: '3',

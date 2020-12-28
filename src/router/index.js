@@ -1,41 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Layout from '../views/Layout.vue'
 import errorRoutes from './error-router'
 import {setTitle} from '@/lib/util'
+import routerList from './module/index'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Layout,
-    meta: {
-      title: '首页',
-      requiresAuth: ['admin', 'user']
-    },
-    children: [
-      {
-        path: 'home',
-        component: Home
-      }
-    ]
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-    beforeEnter: (to, from, next) => {
-      if (from.name === 'Home') {
-        console.log('从home页跳转过来')
-      } else {
-        console.log('不是从home页跳转来的')
-      }
-      next()
-    }
-  },
+  ...routerList,
   {
     path: '/task-detail/:taskId',
     name: 'task-detail',
@@ -81,11 +53,6 @@ const routes = [
     path: '/father',
     name: 'father',
     component: () => import('../views/father.vue'),
-  },
-  {
-    path: '/house',
-    name: 'house',
-    component: () => import('../views/house/index.vue'),
   },
   {
     path: '/menu_page',
