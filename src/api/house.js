@@ -21,3 +21,7 @@ export function upDate_house(params) {
 export function delete_house(params) {
     return vm.$http.post(`deleteHouse`, params)
 }
+// 多参数查询
+export function getHouse(params) {
+    return vm.$http.post(`getHouse`, params)
+}

@@ -69,4 +69,19 @@ export default [
             }
         ],
     },
+    {
+        path: '/baidu-map',
+        component: Layout,
+        meta: {
+            title: '成都区域分布',
+            requiresAuth: ['admin', 'user']
+        },
+        children: [
+            {
+                path: '',
+                name: 'map',
+                component: () => import('@/views/baiduMap/index.vue'),
+            }
+        ],
+    },
 ]

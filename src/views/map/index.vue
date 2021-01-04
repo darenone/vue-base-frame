@@ -1,9 +1,8 @@
 <template>
     <Row>
-        <Col span="12">
-            <echart-map :id="'map1'" :data="mapData1" :styles="{height: '300px'}"></echart-map>
+        <Col span="24">
+            <echart-map :id="'map1'" :data="mapData1" :styles="{height: '500px'}"></echart-map>
         </Col>
-        <Col span="12">col-12</Col>
     </Row>
 </template>
 <script>

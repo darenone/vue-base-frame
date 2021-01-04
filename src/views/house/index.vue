@@ -1,6 +1,7 @@
 <template>
     <Row>
         <Col span="24" style="text-align: left;margin-bottom: 10px;">
+            <query-item @ok="ok3" @cancel="cancel3"></query-item>
             <Button type="primary" @click="modal = true;houseId = ''">新增</Button>
         </Col>
         <Col span="24">
@@ -20,7 +21,7 @@
         <Modal
             v-model="modal"
             title="新增/修改"
-            :styles="{ width: '50%', top: '5%', height: '80%'}"
+            :styles="{ width: '50%', top: '5%', height: '80%', overflow: 'auto'}"
             :mask="false"
             @on-visible-change="modal_change"
             footer-hide>
@@ -29,18 +30,18 @@
         <Modal
             v-model="modal2"
             title="提示"
-            @on-ok="ok2"
-            @on-cancel="cancel2">
+            @on-ok="ok2">
             <p>确定要删除该条任务？</p>
         </Modal>
     </Row>
 </template>
 <script>
-import {get_house_list, add_house, upDate_house, delete_house} from '@/api/house';
+import {get_house_list, add_house, upDate_house, delete_house, getHouse} from '@/api/house';
 import addHouseModal from '_c/modal/add-house';
 import {parseTime} from '@/lib/tool.js';
+import queryItem from './query.vue';
 export default {
-    components: {addHouseModal},
+    components: {addHouseModal, queryItem},
     data () {
         return {
             columns1: [
@@ -86,6 +87,38 @@ export default {
                     align: 'center'
                 },
                 {
+                    title: '状态',
+                    align: 'center',
+                    render: (h, {row}) => {
+                        switch (Number(row.status)) {
+                            case 0:
+                                return h("span",{
+                                    style:{
+                                        color:'#FE5363',
+                                        fontWeight: '700'
+                                    }, 
+                                },'即将报名')
+                                break;
+                            case 1:
+                                return h("span",{
+                                    style:{
+                                        color:'#3CBC95',
+                                        fontWeight: '700'
+                                    }, 
+                                },'正在报名')
+                                break;
+                            case 2:
+                                return h("span",{
+                                    style:{
+                                        color:'#8B8B8B',
+                                        fontWeight: '700'
+                                    }, 
+                                },'报名结束')
+                                break;
+                        }
+                    }
+                },
+                {
                     title: '备注',
                     key: 'remark',
                     align: 'center'
@@ -125,17 +158,22 @@ export default {
             modal: false,
             modal2: false,
             component: null,
-            houseId: ''
+            houseId: '',
+            queryParams: {
+                name: '',
+                status: '',
+                date: ''
+            }
         }
     },
     methods: {
         changepage (start) {
             this.start = start
-            this.get_house_list(this.start, this.length)
+            this.getHouse()
         },
         changepageSize (length) {
             this.length = length
-            this.get_house_list(this.start, this.length)
+            this.getHouse()
         },
         modal_change (val) {
             if (val) {
@@ -164,8 +202,23 @@ export default {
                 id: this.houseId
             })
         },
-        cancel2 () {
+        cancel3 () {
             this.modal2 = false
+        },
+        ok3 (params) {
+            this.start = 1;
+            this.queryParams = {...params};
+            this.getHouse();
+        },
+        cancel3 () {
+            this.start = 1;
+            this.length = 10;
+            this.queryParams = {
+                name: '',
+                status: '',
+                date: ''
+            }
+            this.getHouse()
         },
         // 获取用户
         async get_house_list (start, length) {
@@ -189,7 +242,7 @@ export default {
                 const {status, msg, code, data} = await add_house(obj);
                 this.$Message.success(msg)
                 this.modal = false
-                this.get_house_list(this.start, this.length)
+                this.getHouse()
             } catch (error) {
                 console.log(error)
             }
@@ -201,7 +254,7 @@ export default {
             try {
                 const {status, msg, code, data} = await upDate_house(obj)
                 this.$Message.success(msg)
-                this.get_house_list(this.start, this.length)
+                this.getHouse()
                 this.modal = false
             } catch (error) {
                 console.log(error)
@@ -212,14 +265,28 @@ export default {
             try {
                 const {status, msg, code, data} = await delete_house(params)
                 this.$Message.success(msg)
-                this.get_house_list(this.start, this.length)
+                this.getHouse()
             } catch (error) {
                 console.log(error)
             }
         },
+        // 多参数查询
+        async getHouse () {
+            try {
+                const {status, msg, code, data: {data, iTotalDisplayRecords}} = await getHouse({
+                    ...this.queryParams,
+                    start: (this.start - 1) * this.length,
+                    length: this.length
+                });
+                this.data1 = data;
+                this.total = iTotalDisplayRecords;
+            } catch (error) {
+                console.log(error)
+            }
+        }
     },
     mounted () {
-        this.get_house_list(this.start, this.length)
+        this.getHouse()
     }
 }
 </script>

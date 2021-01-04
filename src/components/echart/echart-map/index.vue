@@ -9,7 +9,7 @@
 <script>
 import axios from 'axios';
 import echarts from 'echarts';
-import mapJson from '@/assets/json/china-main-city/china-main-city-map.js';
+import mapJson from './../../../../public/china-main-city/china-main-city-map.js';
 import config1 from './config1';
 export default {
     props: {
@@ -72,6 +72,10 @@ export default {
         },
         getJson (name) {
             return new Promise((resolve, reject) => {
+                /**
+                 * 更多json数据可以在项目里public/china-main-city这个文件夹里获得
+                 * 也可以访问http://datav.aliyun.com/tools/atlas/#&lat=30.332329214580188&lng=106.72278672066881&zoom=3.5下载想要的json数据
+                 */
                 axios.get(`./china-main-city/${mapJson[name]}.json`).then(resp => {
                     echarts.registerMap('HK', resp.data);
                     resolve(resp.data);
@@ -98,7 +102,9 @@ export default {
     },
     beforeDestroy () {
         window.removeEventListener('resize', this.resize);
-        this.myChart.dispose();
+        if (this.myChart) {
+            this.myChart.dispose();
+        }
     },
 }
 </script>

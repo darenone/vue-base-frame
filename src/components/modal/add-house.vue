@@ -11,6 +11,11 @@
                 <Option v-for="(item, index) in areaList" :key="index" :value="item.value">{{item.label}}</Option>
             </Select>
         </FormItem>
+        <FormItem label="状态">
+            <Select v-model="formValidate.status">
+                <Option v-for="(item, index) in statusList" :key="index" :value="item.value">{{item.label}}</Option>
+            </Select>
+        </FormItem>
         <FormItem label="开盘时间">
             <DatePicker type="date" placeholder="选择开盘时间" v-model="formValidate.startTime"></DatePicker>
         </FormItem>
@@ -44,12 +49,27 @@ export default {
                 name: '',
                 number: 0,
                 areaCode: 0,
+                status: 0,
                 startTime: new Date(),
                 price: 0,
                 addr: '',
                 remark: ''
             },
-            areaList: []
+            areaList: [],
+            statusList: [
+                {
+                    label: '即将报名',
+                    value: 0
+                },
+                {
+                    label: '正在报名',
+                    value: 1
+                },
+                {
+                    label: '报名结束',
+                    value: 2
+                }
+            ]
         }
     },
     methods: {

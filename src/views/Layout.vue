@@ -50,6 +50,10 @@ export default {
                     path: '/map'
                 },
                 {
+                    title: '成都区域分布',
+                    path: '/baidu-map'
+                },
+                {
                     title: '3',
                     children: [
                         {

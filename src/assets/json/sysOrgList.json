@@ -13323,6 +13323,26 @@
               "areaCode": "40319",
               "areaName": "简阳市",
               "areaOrgId": 2526
+            },
+            {
+              "areaCode": "40320",
+              "areaName": "天府新区",
+              "areaOrgId": 2527
+            },
+            {
+              "areaCode": "40321",
+              "areaName": "高新西区",
+              "areaOrgId": 2528
+            },
+            {
+              "areaCode": "40322",
+              "areaName": "高新南区",
+              "areaOrgId": 2529
+            },
+            {
+              "areaCode": "40323",
+              "areaName": "东部新区",
+              "areaOrgId": 2530
             }
           ],
           "cityCode": "2601",
