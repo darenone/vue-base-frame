@@ -84,4 +84,19 @@ export default [
             }
         ],
     },
+    {
+        path: '/calculator',
+        component: Layout,
+        meta: {
+            title: '房价计算器',
+            requiresAuth: ['admin', 'user']
+        },
+        children: [
+            {
+                path: '',
+                name: 'calculator',
+                component: () => import('@/views/calculator/index.vue'),
+            }
+        ],
+    },
 ]

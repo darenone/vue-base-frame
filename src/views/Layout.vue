@@ -54,6 +54,10 @@ export default {
                     path: '/baidu-map'
                 },
                 {
+                    title: '房价计算器',
+                    path: '/calculator'
+                },
+                {
                     title: '3',
                     children: [
                         {

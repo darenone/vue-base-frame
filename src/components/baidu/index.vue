@@ -43,7 +43,7 @@ export default {
                 {label: '11号线', value: 11},
             ],
             line_2024: true,
-            line_2024_list: [8, 17, 8.1, 19, 10, 13, 18, 18.1, 27],
+            line_2024_list: [8, 17, 8.1, 19, 10, 13, 18, 18.1, 27, 30],
             showArea: true,
             colorConfig: {
                 17: '#7B213B',
@@ -55,6 +55,7 @@ export default {
                 18: '#4D888F',
                 18.1: '#4D888F',
                 27: '#00A1E3',
+                30: '#EF8AA1',
             }
         }
     },
@@ -100,6 +101,7 @@ export default {
             try {
                 const {status, code, data, msg} = await get_routeAll({id: id});
                 if (status == 1) {
+                    console.log(data)
                     this.ZMap.polyline(data, id, this.colorConfig[id]);
                 }
             } catch (error) {
