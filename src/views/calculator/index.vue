@@ -119,6 +119,7 @@
         <FormItem>
             <Button type="primary" @click="count">开始计算</Button>
         </FormItem>
+        <p></p>
     </Form>
 </template>
 <script>

@@ -11,9 +11,14 @@ import axios from 'axios';
 import echarts from 'echarts';
 import mapJson from './../../../../public/china-main-city/china-main-city-map.js';
 import config1 from './config1';
+import config2 from './config2';
 export default {
     props: {
         id: {
+            type: String,
+            default: ""
+        },
+        name: {
             type: String,
             default: ""
         },
@@ -63,7 +68,14 @@ export default {
             this.getJson(name).then(res => {
                 if (this.myChart) {
                     this.myChart.clear();
-                    this.myChart.setOption(config1, {lazyUpdate: true});
+                    switch (this.config) {
+                        case 'config1':
+                            this.myChart.setOption(config1, {lazyUpdate: true});
+                        break;
+                        case 'config2':
+                            this.myChart.setOption(config2, {lazyUpdate: true});
+                        break;
+                    }
                     window.addEventListener("resize", this.resize);
                 }
             }).catch(err => {
@@ -94,7 +106,7 @@ export default {
     mounted () {
         if (this.data.length) {
             this.$nextTick(() => {
-                this.renderMap('成都市');
+                this.renderMap(this.name);
             })
         } else {
             this.nodata = true;
