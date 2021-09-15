@@ -1,5 +1,5 @@
 <style lang="less">
-    .status404{
+    .status404 {
         width: 700px;
         height: 369px;
         position: absolute;
@@ -9,43 +9,42 @@
         bottom: 0;
         margin-top: 15%;
         margin-left: calc(100%/2 - 300px);
-        >div{
-          float:left;
+        >div {
+            float:left;
         }
-        .left img{
-          width: 300px;
-          height: 300px;
-          margin-right: 30px;
+        .left img {
+            width: 300px;
+            height: 300px;
+            margin-right: 30px;
         }
-        .right img{
-          margin-top: 24px;
-          width: 210px;
-          height: 80px;
+        .right img {
+            margin-top: 24px;
+            width: 210px;
+            height: 80px;
         }
-        h2{
-          font-weight: bold;
-          font-size: 24px;
-          color: #41444d;
-          margin-top: 22px;
-          height: 24px;
+        h2 {
+            font-weight: bold;
+            font-size: 24px;
+            color: #41444d;
+            margin-top: 22px;
+            height: 24px;
         }
-        p{
-          font-size: 18px;
-          color: #575b66;
-          margin-top: 20px;
-          margin-bottom: 30px;
-          height: 18px;
+        p {
+            font-size: 18px;
+            color: #575b66;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            height: 18px;
         }
-        .refresh{
-          width:80px;
-          text-align: center;
+        .refresh {
+            width:80px;
+            text-align: center;
         }
-        a{
-          height: 34px;
+        a {
+            height: 34px;
         }
     }
 </style>
-
 <template>
     <section class="status404 clearfix">
         <div class="left">
@@ -64,21 +63,19 @@
 export default {
     name:"status404",
     data(){
-        return {
-
-        }
+        return {}
     },
-    methods:{
-      //刷新
-      refresh(){
-        this.$router.go(0);
-      },
-      //返回首页
-      backHome(){
-         this.$router.push({
-           path:'\home'
-         });
-      }
+    methods: {
+        //刷新
+        refresh () {
+            this.$router.go(0);
+        },
+        //返回首页
+        backHome () {
+            this.$router.push({
+                path:'\home'
+            });
+        }
     }
 }
 </script>
